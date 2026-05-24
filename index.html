@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surrounded by Idiots | DISA Personality Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .solid-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            box-shadow: 4px 4px 0px 0px #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .radio-card {
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .radio-card:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        input[type="radio"]:checked + .radio-card {
+            border-color: #6366f1;
+            background-color: #eff6ff;
+            box-shadow: 4px 4px 0px 0px #6366f1;
+        }
+
+        .progress-bar {
+            transition: width 0.4s ease-out;
+        }
+
+        .video-placeholder {
+            background-color: #1e293b;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.5rem;
+            color: white;
+            position: relative;
+            box-shadow: 8px 8px 0px 0px #cbd5e1;
+        }
+
+        .video-placeholder::after {
+            content: '▶';
+            font-size: 3rem;
+            background: #6366f1;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            padding-left: 5px;
+        }
+
+        .sw-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .comm-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .comm-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0px 0px currentColor;
+        }
+
+        .flat-btn {
+            transition: all 0.1s ease;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1);
+        }
+        .flat-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b-4 border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="font-extrabold text-2xl tracking-tighter text-slate-900 cursor-pointer flex items-center gap-3" onclick="showPage('home')">
+                <div class="grid grid-cols-2 gap-1">
+                    <div class="w-3 h-3 bg-red-500"></div>
+                    <div class="w-3 h-3 bg-yellow-400"></div>
+                    <div class="w-3 h-3 bg-green-500"></div>
+                    <div class="w-3 h-3 bg-blue-500"></div>
+                </div>
+                Surrounded<span class="text-indigo-600">By</span>Idiots
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-black uppercase tracking-widest">
+                <button onclick="showPage('home')" class="hover:text-indigo-600 transition">About</button>
+                <button onclick="showPage('strengths')" class="hover:text-indigo-600 transition">Traits</button>
+                <button onclick="showPage('communication')" class="hover:text-indigo-600 transition">Communication</button>
+                <button onclick="showPage('videos')" class="hover:text-indigo-600 transition">Videos</button>
+                <button onclick="startQuiz()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg flat-btn">Take Quiz</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-16">
+        
+        <!-- Page: Home -->
+        <section id="page-home" class="space-y-20">
+            <div class="text-center space-y-8 py-10">
+                <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-tight">
+                    Stop calling them <span class="text-red-500">IDIOTS.</span><br>Start <span class="bg-yellow-300 px-4">understanding</span> them.
+                </h1>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+                    Take our comprehensive 20-question deep-dive into your personality. Discover if you're a bold Red, a social Yellow, a stable Green, or an analytical Blue.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 pt-4">
+                    <button onclick="startQuiz()" class="bg-indigo-600 text-white px-10 py-5 rounded-xl font-black text-xl flat-btn">Start Quiz Now</button>
+                    <button onclick="showPage('communication')" class="bg-white text-slate-900 border-4 border-slate-900 px-10 py-5 rounded-xl font-black text-xl flat-btn">Communication Tips</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="solid-card p-10 rounded-2xl border-l-[16px] border-red-500">
+                    <h3 class="text-red-600 font-black text-2xl mb-3 uppercase">Red: The Dominant</h3>
+                    <p class="text-slate-600 leading-relaxed font-bold">Direct, decisive, and driven. They want to win and they want it done now.</p>
+                </div>
+                <div class="solid-card p-10 rounded-2xl border-l-[16px] border-yellow-400">
+                    <h3 class="text-yellow-600 font-black text-2xl mb-3 uppercase">Yellow: The Inspiring</h3>
+                    <p class="text-slate-600 leading-relaxed font-bold">Enthusiastic, creative, and persuasive. They love being the center of attention.</p>
+                </div>
+                <div class="solid-card p-10 rounded-2xl border-l-[16px] border-green-500">
+                    <h3 class="text-green-600 font-black text-2xl mb-3 uppercase">Green: The Stable</h3>
+                    <p class="text-slate-600 leading-relaxed font-bold">Kind, patient, and consistent. They value the group over themselves.</p>
+                </div>
+                <div class="solid-card p-10 rounded-2xl border-l-[16px] border-blue-500">
+                    <h3 class="text-blue-600 font-black text-2xl mb-3 uppercase">Blue: The Analytical</h3>
+                    <p class="text-slate-600 leading-relaxed font-bold">Correct, cautious, and detail-oriented. They believe in quality and logic.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Strengths & Weaknesses -->
+        <section id="page-strengths" class="hidden space-y-16">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-5xl font-black mb-4">Strengths & Weaknesses</h2>
+                <div class="h-2 w-24 bg-indigo-600 mx-auto"></div>
+            </div>
+            <div class="grid gap-12">
+                <!-- Red Section -->
+                <div class="solid-card overflow-hidden rounded-2xl border-4 border-red-500">
+                    <div class="bg-red-500 py-4 px-8 text-white font-black text-xl uppercase tracking-widest">
+                        THE RED PERSONALITY
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="p-10 bg-red-50">
+                            <span class="sw-badge bg-red-500 text-white">Strengths</span>
+                            <ul class="space-y-4 text-slate-900 font-bold">
+                                <li>• High-speed decision making</li>
+                                <li>• Natural leadership and initiative</li>
+                                <li>• Extremely goal-oriented</li>
+                                <li>• Courageous in the face of conflict</li>
+                                <li>• Efficient and productivity-focused</li>
+                            </ul>
+                        </div>
+                        <div class="p-10 bg-white border-t md:border-t-0 md:border-l-4 border-red-500">
+                            <span class="sw-badge bg-slate-900 text-white">Weaknesses</span>
+                            <ul class="space-y-4 text-slate-600 font-bold">
+                                <li>• Can be perceived as arrogant</li>
+                                <li>• Poor listener when in a hurry</li>
+                                <li>• Little patience for small talk</li>
+                                <li>• May prioritize goals over people</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Yellow Section -->
+                <div class="solid-card overflow-hidden rounded-2xl border-4 border-yellow-400">
+                    <div class="bg-yellow-400 py-4 px-8 text-slate-900 font-black text-xl uppercase tracking-widest">
+                        THE YELLOW PERSONALITY
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="p-10 bg-yellow-50">
+                            <span class="sw-badge bg-yellow-400 text-slate-900">Strengths</span>
+                            <ul class="space-y-4 text-slate-900 font-bold">
+                                <li>• Highly creative and full of ideas</li>
+                                <li>• Excellent communication</li>
+                                <li>• Contagious energy and optimism</li>
+                                <li>• Great at networking</li>
+                                <li>• Adaptable and quick to start</li>
+                            </ul>
+                        </div>
+                        <div class="p-10 bg-white border-t md:border-t-0 md:border-l-4 border-yellow-400">
+                            <span class="sw-badge bg-slate-900 text-white">Weaknesses</span>
+                            <ul class="space-y-4 text-slate-600 font-bold">
+                                <li>• Often disorganized or forgetful</li>
+                                <li>• Struggles with follow-through</li>
+                                <li>• Can talk too much</li>
+                                <li>• Prioritizes being liked over truth</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Green Section -->
+                <div class="solid-card overflow-hidden rounded-2xl border-4 border-green-500">
+                    <div class="bg-green-500 py-4 px-8 text-white font-black text-xl uppercase tracking-widest">
+                        THE GREEN PERSONALITY
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="p-10 bg-green-50">
+                            <span class="sw-badge bg-green-500 text-white">Strengths</span>
+                            <ul class="space-y-4 text-slate-900 font-bold">
+                                <li>• Reliable and extremely dependable</li>
+                                <li>• Calm under pressure and patient</li>
+                                <li>• Great team players</li>
+                                <li>• Empathetic and wonderful listeners</li>
+                                <li>• Consistent and loyal</li>
+                            </ul>
+                        </div>
+                        <div class="p-10 bg-white border-t md:border-t-0 md:border-l-4 border-green-500">
+                            <span class="sw-badge bg-slate-900 text-white">Weaknesses</span>
+                            <ul class="space-y-4 text-slate-600 font-bold">
+                                <li>• Resistant to change</li>
+                                <li>• Avoids conflict at all costs</li>
+                                <li>• Can be overly passive</li>
+                                <li>• Struggles with independent decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blue Section -->
+                <div class="solid-card overflow-hidden rounded-2xl border-4 border-blue-500">
+                    <div class="bg-blue-500 py-4 px-8 text-white font-black text-xl uppercase tracking-widest">
+                        THE BLUE PERSONALITY
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="p-10 bg-blue-50">
+                            <span class="sw-badge bg-blue-500 text-white">Strengths</span>
+                            <ul class="space-y-4 text-slate-900 font-bold">
+                                <li>• Highly logical and objective</li>
+                                <li>• Incredible attention to detail</li>
+                                <li>• Systematic and organized</li>
+                                <li>• High standards for quality</li>
+                                <li>• Think before they speak</li>
+                            </ul>
+                        </div>
+                        <div class="p-10 bg-white border-t md:border-t-0 md:border-l-4 border-blue-500">
+                            <span class="sw-badge bg-slate-900 text-white">Weaknesses</span>
+                            <ul class="space-y-4 text-slate-600 font-bold">
+                                <li>• Overly critical of self and others</li>
+                                <li>• Prone to analysis paralysis</li>
+                                <li>• Perceived as cold or detached</li>
+                                <li>• Gets lost in the details</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Communication -->
+        <section id="page-communication" class="hidden space-y-16">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-5xl font-black mb-4">Communication Strategy</h2>
+                <div class="h-2 w-24 bg-indigo-600 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Red -->
+                <div class="solid-card p-10 rounded-2xl text-red-500 comm-card">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-red-500 text-white flex items-center justify-center font-black text-xl">R</div>
+                        <h3 class="text-2xl font-black text-slate-900 uppercase">Working with Reds</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-slate-700 font-bold italic">Challenge: They may seem impatient or aggressive.</p>
+                        <div class="bg-slate-50 p-6 border-2 border-red-500">
+                            <ul class="text-slate-900 space-y-4 font-bold">
+                                <li>Be Direct: Get to the point.</li>
+                                <li>Results: Focus on the outcome.</li>
+                                <li>Confidence: Stand your ground.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Yellow -->
+                <div class="solid-card p-10 rounded-2xl text-yellow-500 comm-card">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-yellow-400 text-slate-900 flex items-center justify-center font-black text-xl">Y</div>
+                        <h3 class="text-2xl font-black text-slate-900 uppercase">Working with Yellows</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-slate-700 font-bold italic">Challenge: They can be disorganized or talkative.</p>
+                        <div class="bg-slate-50 p-6 border-2 border-yellow-400">
+                            <ul class="text-slate-900 space-y-4 font-bold">
+                                <li>Social: Chat before business.</li>
+                                <li>Writing: Summarize agreements.</li>
+                                <li>Praise: Show appreciation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Green -->
+                <div class="solid-card p-10 rounded-2xl text-green-500 comm-card">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-green-500 text-white flex items-center justify-center font-black text-xl">G</div>
+                        <h3 class="text-2xl font-black text-slate-900 uppercase">Working with Greens</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-slate-700 font-bold italic">Challenge: They hate sudden change or conflict.</p>
+                        <div class="bg-slate-50 p-6 border-2 border-green-500">
+                            <ul class="text-slate-900 space-y-4 font-bold">
+                                <li>Time: Don't rush big decisions.</li>
+                                <li>Connection: Build genuine rapport.</li>
+                                <li>Safe: Encourage them to speak.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blue -->
+                <div class="solid-card p-10 rounded-2xl text-blue-500 comm-card">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-blue-500 text-white flex items-center justify-center font-black text-xl">B</div>
+                        <h3 class="text-2xl font-black text-slate-900 uppercase">Working with Blues</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-slate-700 font-bold italic">Challenge: They need massive amounts of data.</p>
+                        <div class="bg-slate-50 p-6 border-2 border-blue-500">
+                            <ul class="text-slate-900 space-y-4 font-bold">
+                                <li>Data: Bring facts and research.</li>
+                                <li>Accuracy: No empty flattery.</li>
+                                <li>Structure: Stick to the agenda.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Video -->
+        <section id="page-videos" class="hidden space-y-16">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-5xl font-black mb-4">The Video Reference</h2>
+                <div class="h-2 w-24 bg-indigo-600 mx-auto"></div>
+            </div>
+            <div class="solid-card p-10 rounded-2xl">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <a href="https://www.youtube.com/watch?v=jXccLa-NlE0&t=1901s" target="_blank">
+                        <div class="video-placeholder">Surrounded By IDIOTS</div>
+                    </a>
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-black text-slate-900">Surrounded By Idiots by Thomas Erikson</h3>
+                        <p class="text-slate-600 text-lg font-bold">Learn why we communicate and act differently and how Thomas Erikson discovered the four-color system.</p>
+                        <a href="https://www.youtube.com/watch?v=jXccLa-NlE0&t=1901s" target="_blank" class="inline-block bg-slate-900 text-white px-8 py-4 font-black flat-btn uppercase">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Quiz -->
+        <section id="page-quiz" class="hidden max-w-2xl mx-auto py-10">
+            <div class="mb-12">
+                <div class="flex justify-between font-black uppercase text-xs mb-4">
+                    <span id="progress-text" class="text-indigo-600">Question 1 of 20</span>
+                    <span id="percent-text">0%</span>
+                </div>
+                <div class="w-full bg-slate-200 h-6 border-4 border-slate-900 overflow-hidden">
+                    <div id="progress-bar" class="progress-bar bg-indigo-600 h-full w-0"></div>
+                </div>
+            </div>
+            <div class="solid-card p-12 rounded-2xl relative">
+                <form id="quizForm" class="space-y-10">
+                    <div id="question-container"></div>
+                    <div class="flex justify-between items-center pt-8 border-t-4 border-slate-100">
+                        <button type="button" id="prevBtn" onclick="changeQuestion(-1)" class="text-slate-400 font-black uppercase hover:text-slate-900 hidden">← Back</button>
+                        <button type="button" id="nextBtn" onclick="changeQuestion(1)" class="ml-auto bg-slate-900 text-white px-10 py-5 rounded-lg font-black flat-btn">Next</button>
+                        <button type="submit" id="submitBtn" class="ml-auto bg-indigo-600 text-white px-10 py-5 rounded-lg font-black flat-btn hidden">Finish</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Page: Result -->
+        <section id="page-result" class="hidden space-y-12 py-10">
+            <div id="result-header" class="p-20 rounded-2xl text-center border-4 border-slate-900">
+                <h2 class="text-2xl font-black uppercase tracking-widest mb-4">Your Dominant Color is</h2>
+                <h1 id="result-title" class="text-7xl md:text-9xl font-black uppercase tracking-tighter"></h1>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="solid-card p-10 rounded-2xl">
+                    <h3 class="text-2xl font-black mb-4">Your Stress Factor</h3>
+                    <p id="stress-text" class="text-slate-600 font-bold text-lg"></p>
+                </div>
+                <div class="solid-card p-10 rounded-2xl">
+                    <h3 class="text-2xl font-black mb-4">Your Core Trait</h3>
+                    <p id="trait-text" class="text-slate-600 font-bold text-lg"></p>
+                </div>
+            </div>
+            <div class="text-center">
+                <button onclick="location.reload()" class="bg-indigo-600 text-white px-12 py-6 rounded-xl font-black text-xl flat-btn uppercase">Back to Start</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t-4 border-slate-900 py-16">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="font-black text-xl mb-4">SurroundedByIdiots</div>
+            <p class="text-slate-400 font-black text-xs uppercase tracking-widest">Framework Analysis © 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            { q: "How do you usually start your morning at work/school?", options: { red: "Getting right to the most important task.", yellow: "Chatting with colleagues and catching up.", green: "Checking in to see how everyone is feeling.", blue: "Reviewing my to-do list and schedules." }},
+            { q: "A friend is 15 minutes late. What are you thinking?", options: { red: "They are wasting my time. I'm annoyed.", yellow: "No worries, I'll use the time to talk to someone else.", green: "I hope they're okay and haven't had an accident.", blue: "It's unprofessional; the plan was for a specific time." }},
+            { q: "When giving feedback, you are mostly...", options: { red: "Blunt and honest. I don't sugarcoat.", yellow: "Encouraging and focused on the positive.", green: "Gentle. I don't want to hurt their feelings.", blue: "Objective. I focus on specific facts and data." }},
+            { q: "What's your ideal vacation?", options: { red: "An active adventure where I can conquer something.", yellow: "Somewhere crowded and fun with lots of parties.", green: "A peaceful retreat with family or close friends.", blue: "An educational trip to a historical city." }},
+            { q: "In a team project, you're the one who...", options: { red: "Makes the final decisions.", yellow: "Keeps the energy and motivation high.", green: "Helps resolve conflicts between others.", blue: "Checks the work for errors and quality." }},
+            { q: "How do you handle change?", options: { red: "I embrace it if it leads to better results.", yellow: "I love it! New things are exciting.", green: "I'm hesitant; I prefer things to stay the same.", blue: "I need to know the logical reason for the change first." }},
+            { q: "Your workspace is usually...", options: { red: "Efficient, but maybe a bit messy with active projects.", yellow: "Full of photos, bright colors, and 'stuff'.", green: "Comfortable and cozy.", blue: "Extremely organized and clean." }},
+            { q: "When someone disagrees with you, you...", options: { red: "Argue my point until I win.", yellow: "Try to find a fun middle ground.", green: "Give in to keep the peace.", blue: "Present data to prove why I'm right." }},
+            { q: "What's your biggest fear?", options: { red: "Losing control or being taken advantage of.", yellow: "Being ignored or left out of the group.", green: "Conflict or sudden, chaotic change.", blue: "Being wrong or making a mistake." }},
+            { q: "What do you value most in others?", options: { red: "Efficiency and strength.", yellow: "Positivity and creativity.", green: "Loyalty and kindness.", blue: "Accuracy and reliability." }},
+            { q: "When you're telling a story, you...", options: { red: "Stick to the main points to save time.", yellow: "Exaggerate for dramatic effect.", green: "Focus on how the people involved felt.", blue: "Include exact details and specific details." }},
+            { q: "When buying a new gadget, you...", options: { red: "Buy the fastest/best one immediately.", yellow: "Buy the one that looks the coolest.", green: "Ask a friend what they use.", blue: "Compare all the specs and read every review." }},
+            { q: "In a social gathering, you're likely to...", options: { red: "Find the person in charge to talk business.", yellow: "Be the loudest one telling jokes.", green: "Sit with people I already know well.", blue: "Observe everyone from the sidelines." }},
+            { q: "Your email style is...", options: { red: "Short and direct. Often just one line.", yellow: "Friendly, with lots of exclamation marks!", green: "Warm and considerate of the reader.", blue: "Detailed, structured, and long." }},
+            { q: "What motivates you most?", options: { red: "Winning and being the best.", yellow: "Recognition and applause.", green: "A sense of belonging and stability.", blue: "Knowing I've done a perfect job." }},
+            { q: "When someone is crying, you...", options: { red: "Tell them to toughen up and fix the problem.", yellow: "Try to distract them with something funny.", green: "Give them a hug and listen patiently.", blue: "Ask them why they are crying logically." }},
+            { q: "How do you view rules?", options: { red: "They are suggestions, especially if they slow me down.", yellow: "I forget they exist half the time.", green: "They help keep everyone safe and happy.", blue: "They are essential and must be followed exactly." }},
+            { q: "Your favorite type of movie is...", options: { red: "Fast-paced action.", yellow: "Funny comedies.", green: "Heartwarming dramas.", blue: "Documentaries or mysteries." }},
+            { q: "When you're bored, you...", options: { red: "Look for something to compete in.", yellow: "Call a friend to hang out.", green: "Relax and enjoy the quiet.", blue: "Research a topic that interests me." }},
+            { q: "How would friends describe you?", options: { red: "Determined and sometimes bossy.", yellow: "Fun-loving and a bit chaotic.", green: "Reliable and a good listener.", blue: "Smart and a bit of a perfectionist." }}
+        ];
+
+        const colorData = {
+            red: { title: "Red", colorClass: "bg-red-500", stress: "You become bossy and impatient.", trait: "Dominant and result-oriented." },
+            yellow: { title: "Yellow", colorClass: "bg-yellow-400 text-slate-900", stress: "You become scattered and loud.", trait: "Inspiring and social." },
+            green: { title: "Green", colorClass: "bg-green-500", stress: "You become passive and stubborn.", trait: "Stable and reliable." },
+            blue: { title: "Blue", colorClass: "bg-blue-500", stress: "You become overly critical and cold.", trait: "Analytical and precise." }
+        };
+
+        let currentIdx = 0;
+        const userAnswers = new Array(questions.length).fill(null);
+
+        function showPage(pageId) {
+            ['home', 'quiz', 'result', 'videos', 'strengths', 'communication'].forEach(p => {
+                const el = document.getElementById('page-' + p);
+                if(el) el.classList.add('hidden');
+            });
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function startQuiz() {
+            currentIdx = 0;
+            userAnswers.fill(null);
+            renderQuestion();
+            showPage('quiz');
+        }
+
+        function renderQuestion() {
+            const q = questions[currentIdx];
+            const container = document.getElementById('question-container');
+            const progress = ((currentIdx + 1) / questions.length) * 100;
+            
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').innerText = `Question ${currentIdx + 1} of ${questions.length}`;
+            document.getElementById('percent-text').innerText = Math.round(progress) + '%';
+
+            let html = `<p class="text-3xl font-black mb-8 text-slate-900">"${q.q}"</p><div class="grid gap-3">`;
+            for (const [color, text] of Object.entries(q.options)) {
+                const checked = userAnswers[currentIdx] === color ? 'checked' : '';
+                html += `
+                    <label class="relative block">
+                        <input type="radio" name="currentQ" value="${color}" class="hidden peer" ${checked} onchange="saveAnswer('${color}')">
+                        <div class="radio-card p-6 border-4 border-slate-200 peer-checked:bg-slate-50 font-bold text-slate-700">${text}</div>
+                    </label>
+                `;
+            }
+            html += `</div>`;
+            container.innerHTML = html;
+
+            document.getElementById('prevBtn').classList.toggle('hidden', currentIdx === 0);
+            document.getElementById('nextBtn').classList.toggle('hidden', currentIdx === questions.length - 1);
+            document.getElementById('submitBtn').classList.toggle('hidden', currentIdx !== questions.length - 1);
+        }
+
+        function saveAnswer(color) {
+            userAnswers[currentIdx] = color;
+        }
+
+        function changeQuestion(dir) {
+            if (dir === 1 && !userAnswers[currentIdx]) return;
+            currentIdx += dir;
+            renderQuestion();
+        }
+
+        document.getElementById('quizForm').onsubmit = function(e) {
+            e.preventDefault();
+            const counts = userAnswers.reduce((acc, color) => {
+                acc[color] = (acc[color] || 0) + 1;
+                return acc;
+            }, {});
+
+            const winner = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+            const data = colorData[winner];
+            
+            document.getElementById('result-title').innerText = data.title;
+            document.getElementById('stress-text').innerText = data.stress;
+            document.getElementById('trait-text').innerText = data.trait;
+            
+            const header = document.getElementById('result-header');
+            header.className = `p-20 rounded-2xl text-center border-4 border-slate-900 transition-colors duration-500 ${data.colorClass}`;
+            header.style.color = (winner === 'yellow') ? '#1e293b' : 'white';
+
+            showPage('result');
+        };
+    </script>
+</body>
+</html>
